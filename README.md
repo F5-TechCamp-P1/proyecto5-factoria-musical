@@ -22,7 +22,7 @@ Factoria Musical es una aplicación web interactiva que permite a los usuarios t
 - Java (sin frameworks como Spring Boot).
 
 ### Persistencia de Datos:
-- Base de datos H2 en memoria (opción 2).
+- Base de datos H2 en memoria.
 
 ### Herramientas de Trabajo Colaborativo:
 - **Figma**: Diseño y prototipado.
