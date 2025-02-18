@@ -92,7 +92,7 @@ Factoria Musical es una aplicación web interactiva que permite a los usuarios t
 ```
 ## 📌 Consideraciones Técnicas
 - **Backend en Java puro** sin frameworks adicionales.
-- **Persistencia** en JSON o H2, según decisión del equipo.
+- **Persistencia** en H2.
 - **Comunicación entre frontend y backend** mediante llamadas a funciones para gestionar la información de grabaciones y configuraciones.
 
 ## 👥 Equipo de Desarrollo (Equipo 3)
