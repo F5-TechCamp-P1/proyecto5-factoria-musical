@@ -1,4 +1,4 @@
-# 🎵 Factoria Musical
+# 🎵 Factoría Musical
 
 ## 📌 Descripción del Proyecto
 Factoria Musical es una aplicación web interactiva que permite a los usuarios tocar y grabar música utilizando un teclado MIDI virtual. Los usuarios pueden seleccionar partituras según su nivel de habilidad y seguirlas mientras tocan en el teclado virtual.
