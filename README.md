@@ -1,92 +1,112 @@
-# Project Title
+# 🎵 Factoria Musical
 
-## Table of Contents
+## 📌 Descripción del Proyecto
+Factoria Musical es una aplicación web interactiva que permite a los usuarios tocar y grabar música utilizando un teclado MIDI virtual. Los usuarios pueden seleccionar partituras según su nivel de habilidad y seguirlas mientras tocan en el teclado virtual.
 
-- Description
-- Features
-- Getting Started
-  - Prerequisites
-  - Installation
-- Tests
-- Build
-- Usage
-- Feedback and Contributions
-- Contact
+## 🚀 Características Principales
+- Selección de nivel de dificultad: **Iniciación, Medio, Avanzado**.
+- Lista de partituras disponibles según el nivel seleccionado.
+- Visualización de la partitura en la parte superior de la pantalla.
+- Teclado MIDI virtual en la parte inferior de la pantalla.
+- Reproducción de sonidos de teclado: **Piano, Órgano y Sintetizador**.
+- Funciones de grabación y reproducción:
+  - Grabar, pausar grabación, detener grabación.
+  - Reproducir, pausar reproducción, detener reproducción.
+  - Pasar a la siguiente pista de audio o volver a la pista anterior.
 
-## Description
+## 🛠️ Tecnologías Utilizadas
+### Frontend:
+- HTML, CSS, React, JavaScript.
 
-A more detailed explanation of what your project does.  What problem does it solve? What are its key features?  Be specific and avoid jargon if possible.  Include a sentence or two summarizing the project for quick understanding.
+### Backend:
+- Java (sin frameworks como Spring Boot).
 
-## Features
+### Persistencia de Datos:
+- Base de datos H2 en memoria (opción 2).
 
-- A list with all the features from your project.
-- **Feature Name**: What this feature do.
+### Herramientas de Trabajo Colaborativo:
+- **Figma**: Diseño y prototipado.
+- **Jira**: Gestión de tareas y metodología ágil.
+- **Git/GitHub**: Control de versiones y repositorio compartido dentro de una Organización.
 
-## Getting Started
+## 📌 Componentes del Proyecto
+### 1. Página Inicial
+- Selección de nivel: **Iniciación, Medio, Avanzado**.
+- Muestra una lista de partituras disponibles según el nivel.
+- La partitura seleccionada aparece en la parte superior de la pantalla.
 
-### Prerequisites
+### 2. Teclado MIDI Virtual
+- Ubicado en la parte inferior de la pantalla.
+- Simula un teclado real con opciones de sonido: **Piano, Órgano y Sintetizador**.
+- Responde a la interacción del usuario con animaciones y reproducción de sonido.
 
-- Java Development Kit (JDK) 21
-- Maven (for build management)
-- JUnit (for testing)
-- Git (for version control)
+### 3. Grabación y Reproducción
+- **Grabación**: Iniciar, pausar y detener grabación.
+- **Reproducción**: Reproducir, pausar y detener grabaciones.
+- **Navegación de pistas**: Pasar a la siguiente pista o volver a la anterior.
+- Datos almacenados en H2.
 
-### Installation
+### 4. Configuración de la Aplicación
+- Ajustes de volumen y selección del tipo de sonido.
+- Preferencias almacenadas en H2.
 
-1. Clone the repository:
-```Bash
-git clone [https://github.com/your-username/your-repo.git](https://github.com/your-username/your-repo.git)
-```
-2. Change to your project directory:
+### 5. Maquetación y Diseño
+- Prototipo interactivo en **Figma**.
+- Diseño responsivo para escritorio.
+
+### 6. Diagramas
+- **Diagrama de Flujo**: Descripción de navegación e interacciones.
+- **Diagrama de Clases**: Estructura de clases en frontend y backend.
+
+## 📌 Metodología de Trabajo
+- **Scrum** con sprints de 1 semana.
+- **Jira** para organización y gestión de tareas.
+- **Reuniones diarias (Stand-ups)**.
+
+## 📦 Entregables
+- **Código fuente**: Repositorio con frontend y backend.
+- **Prototipo en Figma**.
+- **Documentación técnica**: Instrucciones de instalación, diagramas y arquitectura.
+- **Presentación final**.
+- **Pruebas (Testing)** con cobertura mínima del 70% en frontend y backend.
+
+## 📝 Instalación y Ejecución
+### 1️⃣ Clonar el repositorio:
 ```bash
-cd your-repo
+    git clone https://github.com/F5-TechCamp-P1/proyecto5-factoria-musical
 ```
-4. Run a clean Maven installation:
-```Bash
-mvn clean install
+### 2️⃣ Instalación de dependencias (Frontend):
+```bash
+    cd frontend
+    npm install
 ```
-
-## Tests
-
-Describe how to run the project's tests.  Specify the testing framework used (e.g., JUnit, TestNG) and provide commands for running the tests.
-
-**Example (using Maven and JUnit):**
-
-```Bash
-mvn test
+### 3️⃣ Ejecución del frontend:
+```bash
+    npm start
 ```
-## Build
-
-Explain how to build the project.  Specify the build tool used (e.g., Maven, Gradle) and provide the necessary commands.
-
-**Example (using Maven):**
-
-```Bash
-mvn clean package
+### 4️⃣ Compilación y ejecución del backend:
+```bash
+    cd backend
+    javac Main.java
+    java Main
 ```
+## 📌 Consideraciones Técnicas
+- **Backend en Java puro** sin frameworks adicionales.
+- **Persistencia** en JSON o H2, según decisión del equipo.
+- **Comunicación entre frontend y backend** mediante llamadas a funciones para gestionar la información de grabaciones y configuraciones.
 
-## Usage
-
-Provide examples of how to use your project.  Include code snippets, screenshots, or GIFs if helpful.  Explain the different options and parameters available.
-
-**Example (Java code snippet):**
-
-```Java
-
-// Example usage of the main function
-MyClass myObject = new MyClass();
-myObject.doSomething("important argument");
-int result = myObject.calculateValue(10, 20);
-System.out.println("Result: " + result);
-```
-## Feedback and Contributions:
-
-Feedback is welcome! Feel free to open issues or submit pull requests to suggest improvements or report any bugs.
-
-## Contact:
-
-I'm **Mabel Rincon** you can contact me via  [![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/mabel-rincon/)
+## 👥 Equipo de Desarrollo (Equipo 3)
+- **Alejandro** - Product Owner
+- **Grigory** - Scrum Master
+- **Erika** - Coder & Designer
+- **Rosa** - Coder
+- **Yeferson** - Coder
+- **Mabel** - Coder - [![Linkedin](https://i.sstatic.net/gVE0j.png) LinkedIn](https://www.linkedin.com/in/mabel-rincon/)
 &nbsp;
 Check out other repositories at
 &nbsp;
 [![GitHub](https://i.sstatic.net/tskMh.png) GitHub](https://github.com/MabelRincon)
+
+---
+
+Este documento se actualizará conforme avance el desarrollo del proyecto. ¡Gracias por tu interés! 🎶
