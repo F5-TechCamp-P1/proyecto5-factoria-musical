@@ -79,7 +79,19 @@ nb-configuration.xml
 ## Visual Studio Code
 ##############################
 .vscode/
+.vscode
 .code-workspace
+
+####################################################
+# VS Code files for those working on multiple tools
+####################################################
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
 
 ##############################
 ## OS X
