@@ -1,4 +1,4 @@
-package dev;
+package com.f5.factoria_musical;
 
 public final class App {
     private App() {}
