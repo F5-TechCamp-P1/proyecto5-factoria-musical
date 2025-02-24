@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 public class RecordingTest {
 
-    private Recording recording;
-
-    @Before
     @Test
     @DisplayName("Test initialize the recording with example values")
 
@@ -21,5 +18,21 @@ public class RecordingTest {
         recording.setDuration("120");
     }
 
+    @Test
+    @DisplayName("Test getters and setters")
 
+    public void testGettersAndSetters() {
+        Recording recording = new Recording();
+        recording.setId(1);
+        recording.setAudioData("datosAudioEjemplo");
+        recording.setDate("2021-05-05");
+        recording.setDuration("120");
+
+        assertEquals(1, recording.getId());
+        assertEquals("datosAudioEjemplo", recording.getAudioData());
+        assertEquals("2021-05-05", recording.getDate());
+        assertEquals("120", recording.getDuration());
+    }
+
+    
 }
