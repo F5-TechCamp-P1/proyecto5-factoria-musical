@@ -34,5 +34,19 @@ public class RecordingTest {
         assertEquals("120", recording.getDuration());
     }
 
+    @Test
+    @DisplayName("Test getDetails method")
+
+    public void testGetDetails() {
+        Recording recording = new Recording();
+        recording.setId(1);
+        recording.setAudioData("datosAudioEjemplo");
+        recording.setDate("2021-05-05");
+        recording.setDuration("120");
+
+        assertEquals("Recording{id=1, audioData='datosAudioEjemplo', date='2021-05-05', duration='120'}",
+                recording.getDetails());
+    }
+
     
 }
