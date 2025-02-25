@@ -10,7 +10,7 @@ public class RecordingRepository {
 
     public static void save(Recording recording) {
 
-        String sql = "INSERT INTO recordings (id,audio_data, date, duration) VALUES (?, ?, ?,?)";
+        String sql = "INSERT INTO recordings (id,audio_data, recording_date, duration) VALUES (?, ?, ?,?)";
         try (Connection connection = DatabaseConfig.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)) {
 
