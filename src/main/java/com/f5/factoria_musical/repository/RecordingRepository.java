@@ -15,7 +15,7 @@ public class RecordingRepository {
                 PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, recording.getId());
-            ps.setString(2, recording.getAudioData());
+            ps.setBytes(2, recording.getAudioData());
             ps.setDate(3, Date.valueOf(recording.getRecordingDate()));
             ps.setInt(4, recording.getDuration());
 
@@ -36,7 +36,7 @@ public class RecordingRepository {
             while (resultSet.next()) {
                 Recording recording = new Recording();
                 recording.setId(resultSet.getInt("id"));
-                recording.setAudioData(resultSet.getString("audio_data"));
+                recording.setAudioData(resultSet.getBytes("audio_data"));
                 recording.setRecordingDate(resultSet.getString("date").toString());
                 recording.setDuration(resultSet.getInt("duration"));
                 recordings.add(recording);
@@ -61,7 +61,7 @@ public class RecordingRepository {
                 if (resultSet.next()) {
                     recording = new Recording();
                     recording.setId(resultSet.getInt("id"));
-                    recording.setAudioData(resultSet.getString("audio_data"));
+                    recording.setAudioData(resultSet.getBytes("audio_data"));
                     recording.setRecordingDate(resultSet.getString("date").toString());
                     recording.setDuration(resultSet.getInt("duration"));
                 }
