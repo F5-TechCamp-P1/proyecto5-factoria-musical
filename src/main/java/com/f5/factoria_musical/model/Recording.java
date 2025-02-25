@@ -5,13 +5,13 @@ public class Recording {
     private int id;
     private String audioData;
     private String date;
-    private String duration;
+    private int duration;
 
     public Recording() {
 
     }
 
-    public Recording(int id, String audioData, String date, String duration) {
+    public Recording(int id, String audioData, String date, int duration) {
         this.id = id;
         this.audioData = audioData;
         this.date = date;
@@ -31,7 +31,7 @@ public class Recording {
         return date;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
@@ -47,7 +47,7 @@ public class Recording {
         this.date = date;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
