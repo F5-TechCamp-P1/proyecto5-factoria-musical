@@ -7,18 +7,18 @@ public class Recording {
     private String date;
     private String duration;
 
-    public Recording () {
+    public Recording() {
 
     }
 
-    public Recording
-    public Grabacion(int id, String audioData, String date, String duration) {
+    public Recording(int id, String audioData, String date, String duration) {
         this.id = id;
         this.audioData = audioData;
         this.date = date;
         this.duration = duration;
 
     }
+
     public int getId() {
         return id;
     }
@@ -34,7 +34,7 @@ public class Recording {
     public String getDuration() {
         return duration;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -51,7 +51,7 @@ public class Recording {
         this.duration = duration;
     }
 
-    public String getDetails () {
+    public String getDetails() {
         return "Recording{" +
                 "id=" + id +
                 ", audioData='" + audioData + '\'' +
@@ -61,7 +61,3 @@ public class Recording {
     }
 
 }
-
-    
-
-
