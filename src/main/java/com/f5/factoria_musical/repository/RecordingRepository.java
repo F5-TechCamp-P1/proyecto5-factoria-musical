@@ -16,7 +16,7 @@ public class RecordingRepository {
 
             ps.setInt(1, recording.getId());
             ps.setString(2, recording.getAudioData());
-            ps.setDate(3, Date.valueOf(recording.getDate()));
+            ps.setDate(3, Date.valueOf(recording.getRecordingDate()));
             ps.setInt(4, recording.getDuration());
 
             ps.executeUpdate();
@@ -37,7 +37,7 @@ public class RecordingRepository {
                 Recording recording = new Recording();
                 recording.setId(resultSet.getInt("id"));
                 recording.setAudioData(resultSet.getString("audio_data"));
-                recording.setDate(resultSet.getString("date").toString());
+                recording.setRecordingDate(resultSet.getString("date").toString());
                 recording.setDuration(resultSet.getInt("duration"));
                 recordings.add(recording);
             }
@@ -62,7 +62,7 @@ public class RecordingRepository {
                     recording = new Recording();
                     recording.setId(resultSet.getInt("id"));
                     recording.setAudioData(resultSet.getString("audio_data"));
-                    recording.setDate(resultSet.getString("date").toString());
+                    recording.setRecordingDate(resultSet.getString("date").toString());
                     recording.setDuration(resultSet.getInt("duration"));
                 }
             }
