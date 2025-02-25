@@ -4,17 +4,17 @@ public class Piano {
     private int id;
     private float volume;
     private String soundType;
-    private String configuration; // Stores configuration as a string
+    private String configuration; 
 
-    // Constructor
+    
     public Piano(int id, float volume, String soundType) {
         this.id = id;
         this.volume = volume;
         this.soundType = soundType;
-        this.configuration = "Default"; // Default configuration
+        this.configuration = "Default"; 
     }
 
-    // Getters
+    
     public int getId() {
         return id;
     }
@@ -31,7 +31,7 @@ public class Piano {
         return configuration;
     }
 
-    // Setters
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -48,7 +48,7 @@ public class Piano {
         this.configuration = configuration;
     }
 
-    // Method to display piano details
+    
     @Override
     public String toString() {
         return "Piano{" +
