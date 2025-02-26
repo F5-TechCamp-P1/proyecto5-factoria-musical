@@ -3,18 +3,18 @@ package com.f5.factoria_musical.model;
 public class Recording {
 
     private int id;
-    private String audioData;
-    private String date;
+    private byte [] audioData;
+    private String recordingDate;
     private int duration;
 
     public Recording() {
 
     }
 
-    public Recording(int id, String audioData, String date, int duration) {
+    public Recording(int id, byte[] audioData, String recordingDate, int duration) {
         this.id = id;
         this.audioData = audioData;
-        this.date = date;
+        this.recordingDate = recordingDate;
         this.duration = duration;
 
     }
@@ -23,12 +23,12 @@ public class Recording {
         return id;
     }
 
-    public String getAudioData() {
+    public byte[] getAudioData() {
         return audioData;
     }
 
-    public String getDate() {
-        return date;
+    public String getRecordingDate() {
+        return recordingDate;
     }
 
     public int getDuration() {
@@ -39,12 +39,12 @@ public class Recording {
         this.id = id;
     }
 
-    public void setAudioData(String audioData) {
+    public void setAudioData(byte[] audioData) {
         this.audioData = audioData;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setRecordingDate(String recordingDate) {
+        this.recordingDate = recordingDate;
     }
 
     public void setDuration(int duration) {
@@ -55,7 +55,7 @@ public class Recording {
         return "Recording{" +
                 "id=" + id +
                 ", audioData='" + audioData + '\'' +
-                ", date='" + date + '\'' +
+                ", date='" + recordingDate + '\'' +
                 ", duration='" + duration + '\'' +
                 '}';
     }
