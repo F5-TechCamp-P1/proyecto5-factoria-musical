@@ -2,6 +2,7 @@ package com.f5.factoria_musical;
 
 import com.f5.factoria_musical.controller.PianoController;
 import com.f5.factoria_musical.controller.RecordingController;
+import com.f5.factoria_musical.database.DatabaseInitializer;
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.io.IOException;
 
 public  class Server {
        public static void main(String[] args) throws IOException{
+
+       // DatabaseInitializer.initialize();
 
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
    

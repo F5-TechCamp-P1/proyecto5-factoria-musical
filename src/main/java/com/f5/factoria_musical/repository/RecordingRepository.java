@@ -10,16 +10,23 @@ public class RecordingRepository {
 
     public static void save(Recording recording) {
 
-        String sql = "INSERT INTO recordings (id,audio_data, recording_date, duration) VALUES (?, ?, ?,?)";
+        String sql = "INSERT INTO recordings (audio_data, recording_date, duration) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseConfig.getConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setInt(1, recording.getId());
-            ps.setBytes(2, recording.getAudioData());
-            ps.setDate(3, Date.valueOf(recording.getRecordingDate()));
-            ps.setInt(4, recording.getDuration());
+            ps.setBytes(1, recording.getAudioData());
+            ps.setDate(2, Date.valueOf(recording.getRecordingDate()));
+            ps.setInt(3, recording.getDuration());
 
             ps.executeUpdate();
+
+            // Obtener el ID generado automáticamente por la base de datos
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    recording.setId(generatedKeys.getInt(1));
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
