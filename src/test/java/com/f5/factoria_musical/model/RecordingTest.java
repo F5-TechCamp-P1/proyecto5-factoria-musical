@@ -15,7 +15,7 @@ public class RecordingTest {
         recording.setId(1);
         recording.setAudioData("datosAudioEjemplo");
         recording.setDate("2021-05-05");
-        recording.setDuration("120");
+        recording.setDuration(120);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class RecordingTest {
         recording.setId(1);
         recording.setAudioData("datosAudioEjemplo");
         recording.setDate("2021-05-05");
-        recording.setDuration("120");
+        recording.setDuration(120);
 
         assertEquals(1, recording.getId());
         assertEquals("datosAudioEjemplo", recording.getAudioData());
@@ -42,7 +42,7 @@ public class RecordingTest {
         recording.setId(1);
         recording.setAudioData("datosAudioEjemplo");
         recording.setDate("2021-05-05");
-        recording.setDuration("120");
+        recording.setDuration(120);
 
         assertEquals("Recording{id=1, audioData='datosAudioEjemplo', date='2021-05-05', duration='120'}",
                 recording.getDetails());
