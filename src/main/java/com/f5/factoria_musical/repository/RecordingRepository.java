@@ -3,25 +3,33 @@ package com.f5.factoria_musical.repository;
 import com.f5.factoria_musical.model.Recording;
 import com.f5.factoria_musical.database.DatabaseConfig;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecordingRepository {
 
     public static void save(Recording recording) {
-        String sql = "INSERT INTO recordings (audio_data, recording_date, duration) VALUES (?, ?, ?)";
+
+        if (recording.getRecordingDate() == null || recording.getRecordingDate().isEmpty()) {
+            recording.setRecordingDate(LocalDate.now().toString());
+        }
+
+        String sql = "INSERT INTO recordings (audio_data, recording_date, duration, title, piano_configuration) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConfig.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setBytes(1, recording.getAudioData());
             ps.setDate(2, Date.valueOf(recording.getRecordingDate()));
             ps.setInt(3, recording.getDuration());
+            ps.setString(4, recording.getTitle());
+            ps.setString(5, recording.getPianoConfiguration());
 
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Insertion failed, no rows affected.");
             }
-            
+
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     recording.setId(generatedKeys.getInt(1));
@@ -41,8 +49,8 @@ public class RecordingRepository {
         String sql = "SELECT * FROM recordings";
 
         try (Connection connection = DatabaseConfig.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(sql)) {
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
 
             while (resultSet.next()) {
                 Recording recording = new Recording();
@@ -50,6 +58,8 @@ public class RecordingRepository {
                 recording.setAudioData(resultSet.getBytes("audio_data"));
                 recording.setRecordingDate(resultSet.getString("recording_date"));
                 recording.setDuration(resultSet.getInt("duration"));
+                recording.setTitle(resultSet.getString("title"));
+                recording.setPianoConfiguration(resultSet.getString("piano_configuration"));
                 recordings.add(recording);
             }
         } catch (SQLException e) {
@@ -64,7 +74,7 @@ public class RecordingRepository {
         Recording recording = null;
 
         try (Connection connection = DatabaseConfig.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+                PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, id);
 
@@ -75,6 +85,8 @@ public class RecordingRepository {
                     recording.setAudioData(resultSet.getBytes("audio_data"));
                     recording.setRecordingDate(resultSet.getString("recording_date"));
                     recording.setDuration(resultSet.getInt("duration"));
+                    recording.setTitle(resultSet.getString("title"));
+                    recording.setPianoConfiguration(resultSet.getString("piano_configuration"));
                 }
             }
         } catch (SQLException e) {
@@ -88,7 +100,7 @@ public class RecordingRepository {
         String sql = "DELETE FROM recordings WHERE id = ?";
 
         try (Connection connection = DatabaseConfig.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql)) {
+                PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();
