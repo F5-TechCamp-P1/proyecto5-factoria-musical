@@ -8,24 +8,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
-
+import java.util.Base64;
 import java.util.List;
-import org.json.simple.parser.ParseException;
-
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
 public class RecordingController implements HttpHandler {
     private RecordingRepository recordingRepository;
 
     public RecordingController() {
-
         this.recordingRepository = new RecordingRepository();
     }
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         exchange.getResponseHeaders().add("Content-Type", "application/json");
 
@@ -33,22 +31,21 @@ public class RecordingController implements HttpHandler {
         String response = "";
 
         if ("GET".equalsIgnoreCase(method)) {
-
             List<Recording> recordings = recordingRepository.readAll();
-            StringBuilder sb = new StringBuilder();
-            sb.append("[");
+            JSONArray jsonArray = new JSONArray(); 
 
             for (Recording r : recordings) {
-                sb.append(r.getDetails()).append(",");
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", r.getId());
+                jsonObject.put("audioData", Base64.getEncoder().encodeToString(r.getAudioData())); 
+                jsonObject.put("recordingDate", r.getRecordingDate());
+                jsonObject.put("duration", r.getDuration());
+                jsonArray.add(jsonObject);
             }
-            if (!recordings.isEmpty()) {
-                sb.deleteCharAt(sb.length() - 1);
-            }
-            sb.append("]");
-            response = sb.toString();
+
+            response = jsonArray.toJSONString(); 
             exchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_8).length);
         } else if ("POST".equalsIgnoreCase(method)) {
-
             InputStream is = exchange.getRequestBody();
             String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
             JSONParser parser = new JSONParser();
