@@ -21,7 +21,7 @@ public class RecordingRepository {
 
             ps.setBytes(1, recording.getAudioData());
             ps.setDate(2, Date.valueOf(recording.getRecordingDate()));
-            ps.setInt(3, recording.getDuration());
+            ps.setDouble(3, recording.getDuration());
             ps.setString(4, recording.getTitle());
             ps.setString(5, recording.getPianoConfiguration());
 

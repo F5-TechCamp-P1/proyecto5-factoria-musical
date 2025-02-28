@@ -40,6 +40,8 @@ public class RecordingController implements HttpHandler {
                 case "DELETE":
                     handleDelete(exchange);
                     break;
+                case "OPTIONS":
+                    handleOptions(exchange);
                 default:
                     sendResponse(exchange, 405, "{\"error\":\"Method Not Allowed\"}");
                     break;
@@ -50,7 +52,16 @@ public class RecordingController implements HttpHandler {
         }
     }
 
+
+    private void handleOptions(HttpExchange exchange) throws IOException {
     
+        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        
+        exchange.sendResponseHeaders(204, -1);
+        exchange.getResponseBody().close();
+        return;
+    }
     
     private void handleGet(HttpExchange exchange) throws IOException {
         String path = exchange.getRequestURI().getPath(); 
@@ -101,15 +112,15 @@ public class RecordingController implements HttpHandler {
             JSONObject json = (JSONObject) parser.parse(body);
             String audioDataStr = json.get("audioData").toString();
             byte[] audioData = Base64.getDecoder().decode(audioDataStr);
-            int duration = Integer.parseInt(json.get("duration").toString());
+            double duration = ((Number) json.get("duration")).doubleValue();
             String title = json.get("title").toString();
             String pianoConfiguration = json.get("pianoConfiguration").toString();
-
-           
+        
             Recording recording = new Recording(0, audioData, null, duration, title, pianoConfiguration);
             RecordingRepository.save(recording);
             sendResponse(exchange, 201, "{\"message\":\"Recording saved successfully\"}");
         } catch (ParseException e) {
+            e.printStackTrace();
             sendResponse(exchange, 400, "{\"error\":\"Invalid JSON format.\"}");
         }
     }

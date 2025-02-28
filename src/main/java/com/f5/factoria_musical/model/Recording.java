@@ -7,14 +7,14 @@ public class Recording {
     private int id;
     private byte[] audioData;
     private String recordingDate; 
-    private int duration;
+    private double duration;
     private String title;              
     private String pianoConfiguration; 
 
     public Recording() {
     }
 
-    public Recording(int id, byte[] audioData, String recordingDate, int duration, String title, String pianoConfiguration) {
+    public Recording(int id, byte[] audioData, String recordingDate, double duration, String title, String pianoConfiguration) {
         this.id = id;
         this.audioData = audioData;
         this.recordingDate = recordingDate;
@@ -35,7 +35,7 @@ public class Recording {
         return recordingDate;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
     
