@@ -1,8 +1,12 @@
 package com.f5.factoria_musical.controller;
 
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+
+import java.io.IOException;
 import java.sql.*;
 
-public class PianoController {
+public class PianoController implements HttpHandler {
     private static final String JDBC_URL = "jdbc:h2:./data/mydb";
     private static final String USER = "sa";
     private static final String PASSWORD = "";
@@ -60,5 +64,11 @@ public class PianoController {
 
     private boolean isValidSoundType(String soundType) {
         return soundType.equals("Classical") || soundType.equals("Organ") || soundType.equals("Electric");
+    }
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'handle'");
     }
 }

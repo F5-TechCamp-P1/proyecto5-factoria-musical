@@ -1,63 +1,86 @@
 package com.f5.factoria_musical.model;
 
+import java.util.Base64;
+
 public class Recording {
 
     private int id;
-    private String audioData;
-    private String date;
-    private int duration;
+    private byte[] audioData;
+    private String recordingDate; 
+    private double duration;
+    private String title;              
+    private String pianoConfiguration; 
 
     public Recording() {
-
     }
 
-    public Recording(int id, String audioData, String date, int duration) {
+    public Recording(int id, byte[] audioData, String recordingDate, double duration, String title, String pianoConfiguration) {
         this.id = id;
         this.audioData = audioData;
-        this.date = date;
+        this.recordingDate = recordingDate;
         this.duration = duration;
-
+        this.title = title;
+        this.pianoConfiguration = pianoConfiguration;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getAudioData() {
+    public byte[] getAudioData() {
         return audioData;
     }
 
-    public String getDate() {
-        return date;
+    public String getRecordingDate() {
+        return recordingDate;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
+    
+    public String getTitle() {
+        return title;
+    }
+    
+    public String getPianoConfiguration() {
+        return pianoConfiguration;
+    }
+
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setAudioData(String audioData) {
+    public void setAudioData(byte[] audioData) {
         this.audioData = audioData;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setRecordingDate(String recordingDate) {
+        this.recordingDate = recordingDate;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
+    
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public void setPianoConfiguration(String pianoConfiguration) {
+        this.pianoConfiguration = pianoConfiguration;
+    }
 
+  
     public String getDetails() {
         return "Recording{" +
                 "id=" + id +
-                ", audioData='" + audioData + '\'' +
-                ", date='" + date + '\'' +
-                ", duration='" + duration + '\'' +
+                ", audioData='" + Base64.getEncoder().encodeToString(audioData) + '\'' +
+                ", recordingDate='" + recordingDate + '\'' +
+                ", duration=" + duration +
+                ", title='" + title + '\'' +
+                ", pianoConfiguration='" + pianoConfiguration + '\'' +
                 '}';
     }
-
 }
