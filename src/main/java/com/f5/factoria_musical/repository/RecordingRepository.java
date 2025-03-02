@@ -57,7 +57,7 @@ public class RecordingRepository {
                 recording.setId(resultSet.getInt("id"));
                 recording.setAudioData(resultSet.getBytes("audio_data"));
                 recording.setRecordingDate(resultSet.getString("recording_date"));
-                recording.setDuration(resultSet.getInt("duration"));
+                recording.setDuration( resultSet.getDouble("duration"));
                 recording.setTitle(resultSet.getString("title"));
                 recording.setPianoConfiguration(resultSet.getString("piano_configuration"));
                 recordings.add(recording);

@@ -12,7 +12,7 @@ package com.f5.factoria_musical.database;
             "id INT AUTO_INCREMENT PRIMARY KEY," +
             "audio_data BLOB," +
             "recording_date DATE," +
-            "duration INT," +
+            "duration DOUBLE," +
             "title VARCHAR(255)," +
             "piano_configuration VARCHAR(255));";
     

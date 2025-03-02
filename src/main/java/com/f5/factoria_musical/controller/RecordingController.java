@@ -42,6 +42,7 @@ public class RecordingController implements HttpHandler {
                     break;
                 case "OPTIONS":
                     handleOptions(exchange);
+                    break;
                 default:
                     sendResponse(exchange, 405, "{\"error\":\"Method Not Allowed\"}");
                     break;

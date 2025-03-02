@@ -60,7 +60,7 @@ public class Recording {
         this.recordingDate = recordingDate;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
     
