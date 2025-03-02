@@ -4,17 +4,15 @@ public class Piano {
     private int id;
     private float volume;
     private String soundType;
-    private String configuration; 
+    private String configuration;
 
-    
     public Piano(int id, float volume, String soundType) {
         this.id = id;
         this.volume = volume;
         this.soundType = soundType;
-        this.configuration = "Default"; 
+        this.configuration = "Default";
     }
 
-    
     public int getId() {
         return id;
     }
@@ -31,7 +29,6 @@ public class Piano {
         return configuration;
     }
 
-    
     public void setId(int id) {
         this.id = id;
     }
@@ -48,7 +45,6 @@ public class Piano {
         this.configuration = configuration;
     }
 
-    
     @Override
     public String toString() {
         return "Piano{" +
@@ -59,4 +55,3 @@ public class Piano {
                 '}';
     }
 }
-

@@ -23,7 +23,7 @@ public class RecordingController implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-       
+
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         exchange.getResponseHeaders().add("Content-Type", "application/json");
 
@@ -54,21 +54,20 @@ public class RecordingController implements HttpHandler {
         }
     }
 
-
     private void handleOptions(HttpExchange exchange) throws IOException {
-    
+
         exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
         exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, Authorization");
-        
+
         exchange.sendResponseHeaders(204, -1);
         exchange.getResponseBody().close();
         return;
     }
-    
+
     private void handleGet(HttpExchange exchange) throws IOException {
-        String path = exchange.getRequestURI().getPath(); 
+        String path = exchange.getRequestURI().getPath();
         String[] segments = path.split("/");
-        if (segments.length >= 3) { 
+        if (segments.length >= 3) {
             try {
                 int id = Integer.parseInt(segments[2]);
                 Recording rec = recordingRepository.readById(id);
@@ -104,8 +103,6 @@ public class RecordingController implements HttpHandler {
         }
     }
 
-  
-    
     private void handlePost(HttpExchange exchange) throws IOException {
         InputStream is = exchange.getRequestBody();
         String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
@@ -117,7 +114,7 @@ public class RecordingController implements HttpHandler {
             double duration = ((Number) json.get("duration")).doubleValue();
             String title = json.get("title").toString();
             String pianoConfiguration = json.get("pianoConfiguration").toString();
-        
+
             Recording recording = new Recording(0, audioData, null, duration, title, pianoConfiguration);
             RecordingRepository.save(recording);
             sendResponse(exchange, 201, "{\"message\":\"Recording saved successfully\"}");
@@ -127,15 +124,14 @@ public class RecordingController implements HttpHandler {
         }
     }
 
-    
     private void handleDelete(HttpExchange exchange) throws IOException {
-        
+
         String path = exchange.getRequestURI().getPath();
         String[] segments = path.split("/");
         if (segments.length >= 3) {
             try {
                 int id = Integer.parseInt(segments[2]);
-                
+
                 Recording rec = recordingRepository.readById(id);
                 if (rec == null) {
                     sendResponse(exchange, 404, "{\"error\":\"Recording not found for deletion.\"}");
@@ -150,9 +146,7 @@ public class RecordingController implements HttpHandler {
             sendResponse(exchange, 400, "{\"error\":\"Missing ID in URL.\"}");
         }
     }
-    
 
-    
     private void sendResponse(HttpExchange exchange, int statusCode, String response) throws IOException {
         byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
         exchange.sendResponseHeaders(statusCode, bytes.length);

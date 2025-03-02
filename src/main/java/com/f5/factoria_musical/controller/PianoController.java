@@ -17,8 +17,9 @@ public class PianoController implements HttpHandler {
 
     private void createTableIfNotExists() {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
-             Statement stmt = conn.createStatement()) {
-            stmt.execute("CREATE TABLE IF NOT EXISTS Piano (id INT PRIMARY KEY AUTO_INCREMENT, volume FLOAT, soundType VARCHAR(255))");
+                Statement stmt = conn.createStatement()) {
+            stmt.execute(
+                    "CREATE TABLE IF NOT EXISTS Piano (id INT PRIMARY KEY AUTO_INCREMENT, volume FLOAT, soundType VARCHAR(255))");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -30,14 +31,16 @@ public class PianoController implements HttpHandler {
         }
 
         try (Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
-             Statement stmt = conn.createStatement()) {
+                Statement stmt = conn.createStatement()) {
 
             ResultSet rs = stmt.executeQuery("SELECT * FROM Piano LIMIT 1");
             if (rs.next()) {
-                stmt.executeUpdate("UPDATE Piano SET volume=" + volume + ", soundType='" + soundType + "' WHERE id=" + rs.getInt("id"));
+                stmt.executeUpdate("UPDATE Piano SET volume=" + volume + ", soundType='" + soundType + "' WHERE id="
+                        + rs.getInt("id"));
                 return "Piano updated: Volume=" + volume + ", SoundType=" + soundType;
             } else {
-                stmt.executeUpdate("INSERT INTO Piano (volume, soundType) VALUES (" + volume + ", '" + soundType + "')");
+                stmt.executeUpdate(
+                        "INSERT INTO Piano (volume, soundType) VALUES (" + volume + ", '" + soundType + "')");
                 return "Piano created: Volume=" + volume + ", SoundType=" + soundType;
             }
         } catch (SQLException e) {
@@ -48,11 +51,12 @@ public class PianoController implements HttpHandler {
 
     public String getPiano() {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Piano LIMIT 1")) {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT * FROM Piano LIMIT 1")) {
 
             if (rs.next()) {
-                return "Piano{id=" + rs.getInt("id") + ", volume=" + rs.getFloat("volume") + ", soundType='" + rs.getString("soundType") + "'}";
+                return "Piano{id=" + rs.getInt("id") + ", volume=" + rs.getFloat("volume") + ", soundType='"
+                        + rs.getString("soundType") + "'}";
             } else {
                 return "No piano found.";
             }

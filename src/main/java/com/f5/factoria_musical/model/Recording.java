@@ -6,15 +6,16 @@ public class Recording {
 
     private int id;
     private byte[] audioData;
-    private String recordingDate; 
+    private String recordingDate;
     private double duration;
-    private String title;              
-    private String pianoConfiguration; 
+    private String title;
+    private String pianoConfiguration;
 
     public Recording() {
     }
 
-    public Recording(int id, byte[] audioData, String recordingDate, double duration, String title, String pianoConfiguration) {
+    public Recording(int id, byte[] audioData, String recordingDate, double duration, String title,
+            String pianoConfiguration) {
         this.id = id;
         this.audioData = audioData;
         this.recordingDate = recordingDate;
@@ -38,15 +39,14 @@ public class Recording {
     public double getDuration() {
         return duration;
     }
-    
+
     public String getTitle() {
         return title;
     }
-    
+
     public String getPianoConfiguration() {
         return pianoConfiguration;
     }
-
 
     public void setId(int id) {
         this.id = id;
@@ -63,16 +63,15 @@ public class Recording {
     public void setDuration(double duration) {
         this.duration = duration;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public void setPianoConfiguration(String pianoConfiguration) {
         this.pianoConfiguration = pianoConfiguration;
     }
 
-  
     public String getDetails() {
         return "Recording{" +
                 "id=" + id +
