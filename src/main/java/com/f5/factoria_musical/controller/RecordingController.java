@@ -33,7 +33,7 @@ public class RecordingController implements HttpHandler {
             switch (method) {
                 case "GET":
                     handleGet(exchange);
-
+                    
                     break;
                 case "POST":
                     handlePost(exchange);
@@ -57,7 +57,7 @@ public class RecordingController implements HttpHandler {
 
     private void handleOptions(HttpExchange exchange) throws IOException {
     
-        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, Authorization");
         
         exchange.sendResponseHeaders(204, -1);

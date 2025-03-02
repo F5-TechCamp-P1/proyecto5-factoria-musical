@@ -1,52 +1,60 @@
 package com.f5.factoria_musical.model;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Base64;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class RecordingTest {
 
-    @Test
-    @DisplayName("Test initialize the recording with example values")
+    private Recording recording;
+    private byte[] audioData;
 
-    public void testInitializeRecording() {
-        Recording recording = new Recording();
-        recording.setId(1);
-        recording.setAudioData("datosAudioEjemplo".getBytes());
-        recording.setRecordingDate("2021-05-05");
-        recording.setDuration(120);
+    @BeforeEach
+    public void setUp() {
+        audioData = "datosAudioEjemplo".getBytes();
+        recording = new Recording(1, audioData, "2021-05-05", 120.5, "Mi Grabación", "Configuración de Piano");
     }
 
     @Test
     @DisplayName("Test getters and setters")
-
     public void testGettersAndSetters() {
-        Recording recording = new Recording();
-        recording.setId(1);
-        recording.setAudioData("datosAudioEjemplo".getBytes());
-        recording.setRecordingDate("2021-05-05");
-        recording.setDuration(120);
+        Recording newRecording = new Recording();
+        newRecording.setId(2);
+        newRecording.setAudioData("nuevosDatosAudio".getBytes());
+        newRecording.setRecordingDate("2023-10-27");
+        newRecording.setDuration(180.0);
+        newRecording.setTitle("Nueva Grabación");
+        newRecording.setPianoConfiguration("Nueva Configuración");
 
-        assertEquals(1, recording.getId());
-        assertEquals("datosAudioEjemplo", recording.getAudioData());
-        assertEquals("2021-05-05", recording.getRecordingDate());
-        assertEquals("120", recording.getDuration());
+        assertEquals(2, newRecording.getId());
+        assertArrayEquals("nuevosDatosAudio".getBytes(), newRecording.getAudioData());
+        assertEquals("2023-10-27", newRecording.getRecordingDate());
+        assertEquals(180.0, newRecording.getDuration());
+        assertEquals("Nueva Grabación", newRecording.getTitle());
+        assertEquals("Nueva Configuración", newRecording.getPianoConfiguration());
     }
 
     @Test
     @DisplayName("Test getDetails method")
-
     public void testGetDetails() {
-        Recording recording = new Recording();
-        recording.setId(1);
-        recording.setAudioData("datosAudioEjemplo".getBytes());
-        recording.setRecordingDate("2021-05-05");
-        recording.setDuration(120);
-
-        assertEquals("Recording{id=1, audioData='datosAudioEjemplo', recordingDate='2021-05-05', duration='120'}",
-                recording.getDetails());
+        String expectedDetails = "Recording{id=1, audioData='" + Base64.getEncoder().encodeToString(audioData) + '\'' +
+                ", recordingDate='2021-05-05', duration=120.5, title='Mi Grabación', pianoConfiguration='Configuración de Piano'}";
+        assertEquals(expectedDetails, recording.getDetails());
     }
 
-    
+    @Test
+    @DisplayName("Test initialize the recording with all parameters constructor")
+    public void testInitializeRecordingWithAllParametersConstructor() {
+        assertEquals(1, recording.getId());
+        assertArrayEquals(audioData, recording.getAudioData());
+        assertEquals("2021-05-05", recording.getRecordingDate());
+        assertEquals(120.5, recording.getDuration());
+        assertEquals("Mi Grabación", recording.getTitle());
+        assertEquals("Configuración de Piano", recording.getPianoConfiguration());
+    }
 }
