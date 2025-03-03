@@ -16,7 +16,7 @@ RUN ./mvnw clean package -DskipTests
 
 EXPOSE 8000
 
-COPY target/factoria-musical-1.0-SNAPSHOT.jar /opt/factoria_musical/
+COPY /target/factoria-musical-1.0-SNAPSHOT.jar /opt/factoria_musical/
 
 RUN chmod +x /opt/factoria_musical/factoria-musical-1.0-SNAPSHOT.jar
 
