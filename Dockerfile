@@ -25,10 +25,10 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8000
 
 # Copy the built JAR file
-COPY target/factoria-musical-1.0-SNAPSHOT.jar /src/main/java/com/f5/factoria_musical
+COPY target/factoria-musical-1.0-SNAPSHOT.jar /src/main/java/com/f5/factoria_musical/app
 
 # Set execution permissions for the JAR
-RUN chmod +rx /src/main/java/com/f5/factoria_musical/factoria-musical-1.0-SNAPSHOT.jar
+RUN chmod +rx /src/main/java/com/f5/factoria_musical/app/factoria-musical-1.0-SNAPSHOT.jar
 
 # Run the application
-CMD ["java", "-jar", "/src/main/java/com/f5/factoria_musical/factoria-musical-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/src/main/java/com/f5/factoria_musical/app/factoria-musical-1.0-SNAPSHOT.jar"]
