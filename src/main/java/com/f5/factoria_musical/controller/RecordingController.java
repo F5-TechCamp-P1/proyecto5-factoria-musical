@@ -33,7 +33,7 @@ public class RecordingController implements HttpHandler {
             switch (method) {
                 case "GET":
                     handleGet(exchange);
-
+                    
                     break;
                 case "POST":
                     handlePost(exchange);
