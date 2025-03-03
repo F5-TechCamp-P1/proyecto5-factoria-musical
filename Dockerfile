@@ -2,7 +2,7 @@
 FROM eclipse-temurin:21-jdk-alpine
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /src/main/java/com/f5/factoria_musical
 
 # Copy Maven Wrapper, config, and pom.xml
 COPY mvnw mvnw.cmd ./
@@ -25,10 +25,10 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8000
 
 # Copy the built JAR file
-COPY target/factoria-musical-1.0-SNAPSHOT.jar /app/app.jar
+COPY target/factoria-musical-1.0-SNAPSHOT.jar /src/main/java/com/f5/factoria_musical
 
 # Set execution permissions for the JAR
-RUN chmod +rx /app/app.jar
+RUN chmod +rx /src/main/java/com/f5/factoria_musical/factoria-musical-1.0-SNAPSHOT.jar
 
 # Run the application
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "/src/main/java/com/f5/factoria_musical/factoria-musical-1.0-SNAPSHOT.jar"]
