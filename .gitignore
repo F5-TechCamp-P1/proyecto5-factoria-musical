@@ -119,3 +119,5 @@ nb-configuration.xml
 *.rar
 
 data/factoria_musical.mv.db
+# Ignorar archivos de bloqueo de la base de datos
+data/*.lock.db
